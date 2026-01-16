@@ -99,11 +99,11 @@ const BugItem = ({ bug: initialBug, userRole, onUpdate, teamMembers = [] }) => {
         
         <p style={{ color: '#444', lineHeight: '1.4' }}>{bug.description}</p>
 
-        {/* Acțiuni permise doar pentru Membrii Proiect (MP) */}
+
         {userRole === 'MP' && bug.status !== 'Resolved' && (
             <div className="bug-actions" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
                 
-                {/* 1. Opțiuni de Alocare (doar pentru bug-uri Open) */}
+             
                 {bug.status === 'Open' && (
                     <>
                         {mpMembers.length === 0 ? (
@@ -124,8 +124,7 @@ const BugItem = ({ bug: initialBug, userRole, onUpdate, teamMembers = [] }) => {
                         )}
                     </>
                 )}
-                
-                {/* 2. Opțiune de Rezolvare (doar dacă e alocat mie) */}
+            
                 {isAssignedToMe && bug.status === 'In Progress' && (
                     <div style={{ flex: 1, display: 'flex', gap: '10px' }}>
                         <input 
@@ -141,7 +140,7 @@ const BugItem = ({ bug: initialBug, userRole, onUpdate, teamMembers = [] }) => {
             </div>
         )}
         
-        {/* Afișare link soluție pentru bug-urile finalizate */}
+
         {bug.status === 'Resolved' && (
             <div style={{ marginTop: '10px', padding: '10px', backgroundColor: '#e9f7ef', borderRadius: '4px' }}>
                 <p style={{ color: '#28a745', margin: 0 }}>
